@@ -9,6 +9,7 @@ import (
 	"github.com/pkg/errors"
 
 	"github.com/hashicorp/vault/api"
+    "fmt"
 )
 
 type Client struct {
@@ -53,6 +54,8 @@ func WithCaPath(path string) *TLSConfig {
 
 func NewClient(addr string, tlsConf *TLSConfig, opts ...ClientOpts) (*Client, error) {
 	conf := api.DefaultConfig()
+
+    fmt.Println("origin transport:%v", conf.HttpClient.Transport)
 
 	conf.Address = addr
 
